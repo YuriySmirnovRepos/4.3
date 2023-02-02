@@ -1,30 +1,24 @@
 const baseURL = `https://api.github.com/search/repositories?per_page=5&q=`;
-const reposList = document.querySelector('ul');
+const selectionList = document.querySelector('ul');
 const input = document.querySelector("input");
 const selectedRepos = document.querySelector(".selected-repos");
 
-const fillList = (evt = new KeyboardEvent()) => 
+const fillSelectionList = (evt = new KeyboardEvent()) => 
 {
   if (evt.key == 'Backspace' && !evt.target.value)
   {
-    removeListItems();
+    clearSelectionList();
   }
   
   const query = `${baseURL}${encodeURIComponent(evt.target.value)}`
-  if (evt.target.value.trim() != '' && 
-    !evt.ctrlKey && 
-    !evt.altKey && 
-    evt.key != 'Space' &&
-    evt.key != 'ArrowDown' &&
-    evt.key != 'ArrowUp' &&
-    evt.key != 'ArrowLeft' &&
-    evt.key != 'ArrowRight') 
+  if (isCorrectKey(evt)) 
   {
-    removeListItems();
+    clearSelectionList();
     SendRequest(query)
     .then(
       (repos) => {
-        // console.log(repos);
+        console.log(repos);
+        // processData(repos.items);
         addListItems(repos.items);
       })
       .catch(err => console.error(err));
@@ -44,6 +38,19 @@ const debounce = (func, debounceTime) =>
   }
 }
 
+function isCorrectKey(evt)
+{
+  return evt.target.value.trim() != '' && 
+    !evt.ctrlKey && 
+    !evt.altKey && 
+    evt.key != 'Space' &&
+    evt.key != 'ArrowDown' &&
+    evt.key != 'ArrowUp' &&
+    evt.key != 'ArrowLeft' &&
+    evt.key != 'ArrowRight'
+}
+
+
 function addListItems(reposArr)
 {
     let nwListItem = null; 
@@ -52,14 +59,15 @@ function addListItems(reposArr)
       nwListItem = document.createElement('li');
       nwListItem.textContent = repoData.name;
       nwListItem.addEventListener('click', addSelectedRepo)
-      reposList.appendChild(nwListItem);
+      selectionList.appendChild(nwListItem);
     });
 }
 
 function addSelectedRepo(evt = new MouseEvent())
 {
   input.value = "";
-  removeListItems();
+  clearSelectionList();
+
   const selectedRepoTemplate = document.querySelector("#selectedRepoTemplate");
   let nwSelectedRepo = selectedRepoTemplate.content.firstElementChild.cloneNode(true);
   let brElmnt = document.createElement('br');
@@ -69,24 +77,24 @@ function addSelectedRepo(evt = new MouseEvent())
           "Owner :", brElmnt.cloneNode(), 
           "Stars :");
   selectedRepos.appendChild(nwSelectedRepo);
-  let repoDelete = nwSelectedRepo.querySelector(".selected-repo_delete");
+  let repoDelete = nwSelectedRepo.querySelector("svg");
   repoDelete.addEventListener('click', removeSelectedRepo);
 }
 
-function removeListItems()
+function clearSelectionList()
 {
-  while (reposList.firstChild) {reposList.removeChild(reposList.firstChild);}
+  while (selectionList.firstChild) 
+  {
+    selectionList.removeChild(selectionList.firstChild);
+  }
 }
 
-function removeSelectedRepo(evt)
+function removeSelectedRepo(evt = new MouseEvent())
 {
-  console.log(evt.nodeName);
-  let trgtName = evt.target.tagName.toLowerCase();
-  trgtName == "div" ? 
-  evt.target.parentElement.remove() : 
-  evt.target.parentElement.parentElement.remove();
-  
+  evt.target.closest(".selected-repos_selected-repo").remove(); 
+  evt.target.removeEventListener('click', removeSelectedRepo);
 }
+
 
 async function SendRequest(queryText){
   let response = await fetch(queryText);
@@ -103,4 +111,4 @@ async function SendRequest(queryText){
 }
 
 input.addEventListener('keydown', 
-        debounce((event) => fillList(event), 800));
+        debounce((event) => fillSelectionList(event), 800));
