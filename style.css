@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+body
+{
+    background-color: #C4C4C4;
+    padding: 20px 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.search-field-container
+{
+    display: flex;
+    flex-direction: column;
+    height: 430px;
+}
+
+.search-field
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1
+{
+    align-self: center;
+}
+
+input
+{
+    height: 30px;
+    font-size: large;
+    border-color:black;
+    border-radius: 2px;
+}
+
+.repos-list
+{
+    margin-top: 0px;
+    padding-left: 0px;
+    list-style: none;
+}
+
+.repos-list li
+{
+    font-size: large;
+    height: 40px;
+    border:solid 2px;
+    padding: 5px 5px;
+}
+
+.repos-list li:hover
+{
+    background-color: #65CDF9;
+    cursor: pointer;
+}
+
+.selected-repos
+{
+    height: fit-content;
+    padding-left: 0px;
+}
+
+.selected-repos_selected-repo
+{
+    height: 101px;
+    display: flex;
+    background-color: #E27BEB;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid black;
+}
+
+svg
+{
+    height: 40px;
+    width: 40px;
+}
+
+
+.selected-repo_delete
+{
+    margin-right: 26px;
+}
+
+.selected-repo_delete:hover
+{
+    cursor: pointer;
+}
+
+.selected-repo_text
+{
+    width:fit-content;
+}
+
+.selected-repo_text p
+{
+    margin: 3px 10px;
+    font-size: larger;
+}
