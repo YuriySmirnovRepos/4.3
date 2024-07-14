@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+* {
+    box-sizing: border-box;
+}
 
 body
 {
@@ -7,82 +9,103 @@ body
     font-family: 'Roboto', sans-serif;
 }
 
-input
-{
-    height: 30px;
-    font-size: large;
-    border-color:black;
-    border-radius: 2px;
-}
-
-h1
-{
-    align-self: center;
-}
-
-ul 
-{
-    list-style: none;
-}
-
-.search-field
-{
+.search-field {
+    width:661px;
+    height: 763px;
+    padding: 62px 84px 72px 77px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
 }
 
-.repos-list
+.search-field__search,
+.search-field__reposSelection
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.search-field__search {
+    height: 430px;
+}
+
+.search-field__title {
+    align-self: center;
+}
+
+
+.search-field__input {
+    font-size: 48px;
+    height: 61px;
+    border: none;
+    outline: none;  
+    padding-left:10px;
+    line-height: 56.25px;
+}
+
+.search-field__suggestions
 {
     margin-top: 0px;
     padding-left: 0px;
+    list-style: none;
 }
 
-
-li
+.search-field__suggestion
 {
-    font-size: large;
+    font-weight: 400;
+    font-size: 30px;
+    background-color: #E3E3E3;
+    align-content:space-around;
     height: 44px;
     border:solid 2px;
     padding: 5px 5px;
+    line-height: 35px;
 }
 
-li:hover
+.search-field__suggestion:hover
 {
     background-color: #65CDF9;
 }
 
-.search-field__firstBlock,
-.search-field__secondBlock
-{
-    display: flex;
-    flex-direction: column;
-}
-.search-field__firstBlock 
-{
-    height: 430px;
-}
 
 .search-field__selectedRepo
 {
+    height: 101px;
+    background-color:#E27BEB;
+    font-size: 24px;
     display:flex;
     justify-content: space-between;
     border: 1px black solid;
+    line-height: 28px;
 }
-
+.selectedRepo__text {
+    padding: 8px 17px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .selectedRepo__text span
 {
-    margin: 10px 10px;
     display: block;
 }
 
 .selectedRepo__deleteIcon
 {
-    width: 86px;
+    margin-right: 34px;
+    width: 35px;
+    height: 35px;
     align-self: center;
-    /* border: 1px solid black; */
 }
+
 .selectedRepo__deleteIcon:hover
 {
     cursor: pointer;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: url(https://fonts.gstatic.com/s/roboto/v30/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
 }

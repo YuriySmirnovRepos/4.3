@@ -11,16 +11,14 @@
     </head>
     <body>
         <div class = "search-field">
-            <div class="search-field__firstBlock">
-                <h1>Github repos search</h1>
-                <input type="text" name="repos-search-query" placeholder="Type to search...">
-                <ul class="repos-list">
+            <div class="search-field__search">
+                <input class="search-field__input" type="text" name="repos-search-query" placeholder="Type to search...">
+                <ul class="search-field__suggestions">
                 </ul>  
             </div>
-            <div class="search-field__secondBlock">
+            <div class="search-field__reposSelection">
             </div>
         </div>
-        <!-- <script src="./script.js" defer></script> -->
     </body>
 </html>
 
@@ -29,9 +27,9 @@
         <div class="selectedRepo__text">
         </div>
         <div class="selectedRepo__deleteIcon"> 
-            <svg width="70" height="70">
-                <line x1="0" y1="0" x2="70" y2="70" stroke="red" stroke-width="3"></line>
-                <line x1="70" y1="0" x2="0" y2="70" stroke="red" stroke-width="3"></line>
+            <svg width="35" height="35">
+                <line x1="0" y1="0" x2="35" y2="35" stroke="red" stroke-width="3"></line>
+                <line x1="35" y1="0" x2="0" y2="35" stroke="red" stroke-width="3"></line>
             </svg>
         </div>
     </div>
