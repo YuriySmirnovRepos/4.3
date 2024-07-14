@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+body
+{
+    background-color: #C4C4C4;
+    padding: 20px 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+input
+{
+    height: 30px;
+    font-size: large;
+    border-color:black;
+    border-radius: 2px;
+}
+
+h1
+{
+    align-self: center;
+}
+
+ul 
+{
+    list-style: none;
+}
+
+.search-field
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.repos-list
+{
+    margin-top: 0px;
+    padding-left: 0px;
+}
+
+
+li
+{
+    font-size: large;
+    height: 44px;
+    border:solid 2px;
+    padding: 5px 5px;
+}
+
+li:hover
+{
+    background-color: #65CDF9;
+}
+
+.search-field__firstBlock,
+.search-field__secondBlock
+{
+    display: flex;
+    flex-direction: column;
+}
+.search-field__firstBlock 
+{
+    height: 430px;
+}
+
+.search-field__selectedRepo
+{
+    display:flex;
+    justify-content: space-between;
+    border: 1px black solid;
+}
+
+.selectedRepo__text span
+{
+    margin: 10px 10px;
+    display: block;
+}
+
+.selectedRepo__deleteIcon
+{
+    width: 86px;
+    align-self: center;
+    /* border: 1px solid black; */
+}
+.selectedRepo__deleteIcon:hover
+{
+    cursor: pointer;
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Task 4.3</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./style.css" rel="stylesheet"> 
+        <script src="./script.js" type="module" defer></script>
+    </head>
+    <body>
+        <div class = "search-field">
+            <div class="search-field__firstBlock">
+                <h1>Github repos search</h1>
+                <input type="text" name="repos-search-query" placeholder="Type to search...">
+                <ul class="repos-list">
+                </ul>  
+            </div>
+            <div class="search-field__secondBlock">
+            </div>
+        </div>
+        <!-- <script src="./script.js" defer></script> -->
+    </body>
+</html>
+
+<template id="selectedRepoTemplate">
+    <div class="search-field__selectedRepo">
+        <div class="selectedRepo__text">
+        </div>
+        <div class="selectedRepo__deleteIcon"> 
+            <svg width="70" height="70">
+                <line x1="0" y1="0" x2="70" y2="70" stroke="red" stroke-width="3"></line>
+                <line x1="70" y1="0" x2="0" y2="70" stroke="red" stroke-width="3"></line>
+            </svg>
+        </div>
+    </div>
+</template>
