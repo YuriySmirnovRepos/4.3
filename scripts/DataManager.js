@@ -11,12 +11,7 @@ class DataManager {
    */
   #cache = new Map();
 
-  /**
-   * The data retrieved from the API
-   *
-   * @type {Array<Object>}
-   */
-  #data = [];
+  #currentQuery = '';
 
   /**
    * The base URL for the API
@@ -43,6 +38,8 @@ class DataManager {
   async getReposData(queryParam) {
     if (!queryParam) return [];
 
+    this.#currentQuery = queryParam;
+
     if (this.#cache.has(queryParam)) return this.#cache.get(queryParam);
 
     const query = `${this.#baseURL}${encodeURIComponent(queryParam)}`;
@@ -50,9 +47,9 @@ class DataManager {
       const response = await fetch(query);
       if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
       const { items } = await response.json();
-      this.#data = items?.map(this.#extractData) || [];
-      this.#cache.set(queryParam, this.#data);
-      return this.#data;
+      let data = items?.map(this.#extractData) || []
+      this.#cache.set(queryParam, data);
+      return data;
     } catch (error) {
       console.error(error.message);
       return [];
@@ -84,7 +81,7 @@ class DataManager {
    * @return {Object|undefined} - The repository data or undefined if not found
    */
   getRepoData(repoName) {
-    return this.#data.find((repo) => repo.name === repoName);
+    return this.#cache.get(this.#currentQuery).find((repo) => repo.name === repoName);
   }
 }
 
